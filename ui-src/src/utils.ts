@@ -9,7 +9,7 @@
 // uiUrl:`http://localhost:5555/holofuel/ui.zip`
 // uiHash: `QMhfFakeHash`
 // dnaUrl: `http://localhost:5555/holofuel/dist/holofuel.dna.json`
-// dnaHash: `QmUrd3q8fF71VM3eA1mSEhcEzRsAiE8XiLnMZXBW6omHdV`
+// dnaHash: HCv15: QmWDzwJ2EDTY6nsmYrHYfgzQ3vsj49xxVoEez8JLPTaviN // OLD: `QmUrd3q8fF71VM3eA1mSEhcEzRsAiE8XiLnMZXBW6omHdV`
 // hCLient agent_id = HcScIk8YYA4M39b7zsX9VCYzkAOett3i9v98krbi55JMf8kju9VSxaG3Myzw8bz
 
 // ======================================

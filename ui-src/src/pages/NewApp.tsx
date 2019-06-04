@@ -369,6 +369,7 @@ class NewApp extends React.Component<Props, State> {
       dnas: [{
         location: '',
         hash: '',
+        handle: ''
       }]
     })
   }
