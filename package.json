@@ -10,8 +10,7 @@
     "hc:test": "cd dna-src && hc test",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "cypress": "$(npm bin)/cypress open"
+    "test": "node scripts/test.js --env=jsdom"
   },
   "author": "",
   "license": "GPL",
@@ -86,7 +85,6 @@
     "@types/node": "^10.5.4",
     "@types/react": "^16.4.8",
     "cpx": "^1.5.0",
-    "cypress": "^3.2.0",
     "immutable": "^3.8.2"
   },
   "jest": {
