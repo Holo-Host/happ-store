@@ -2,6 +2,7 @@ build/
 build-HApps/
 ui/
 dna/
+dna-src/dist
 .dist/
 .cache/
 npm-debug.log
@@ -11,7 +12,13 @@ node_modules
 target
 tmp-storage
 
-dna-src/dist
+Cargo.lock
+package-lock.json
+
+.vscode
+\#*\#
+.\#*
+*~
 
 # OS generated files #
 ######################
