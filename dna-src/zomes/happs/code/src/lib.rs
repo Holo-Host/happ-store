@@ -16,8 +16,8 @@ mod categories;
 mod happs;
 mod ratings;
 
-use crate::happs::AppResource;
 use crate::happs::AppResponse;
+use crate::happs::{AppDnaResource, AppUiResource};
 use crate::ratings::Ratings;
 
 define_zome! {
@@ -32,7 +32,7 @@ define_zome! {
 
     functions: [
         create_app: {
-            inputs:| title: String, description: String, thumbnail_url: String, homepage_url: String, dnas: Vec<AppResource>, ui: Option<AppResource> |,
+            inputs:| title: String, description: String, thumbnail_url: String, homepage_url: String, dnas: Vec<AppDnaResource>, ui: Option<AppUiResource> |,
             outputs: |result: ZomeApiResult<Address>|,
             handler: happs::handlers::handle_create_app
         }

@@ -8,10 +8,16 @@ pub mod handlers;
 pub use handlers::get_linked_apps;
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
-pub struct AppResource {
+pub struct AppUiResource {
     pub location: String,
     pub hash: HashString,
-    pub handle: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
+pub struct AppDnaResource {
+    pub location: String,
+    pub hash: HashString,
+    pub handle: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
@@ -22,8 +28,8 @@ pub struct AppEntry {
     pub description: String,
     pub thumbnail_url: String,
     pub homepage_url: String,
-    pub dnas: Vec<AppResource>,
-    pub ui: Option<AppResource>,
+    pub dnas: Vec<AppDnaResource>,
+    pub ui: Option<AppUiResource>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
