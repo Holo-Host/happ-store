@@ -27,9 +27,9 @@ pub fn get_linked_apps(base_addr: &Address, tag: &str) -> ZomeApiResult<Vec<happ
     Ok(addrs
         .into_iter()
         .map(|addr| {
-            let (upvotes, upvoted_my_me) = get_upvotes(&addr).unwrap();
+            let (upvotes, upvoted_by_me) = get_upvotes(&addr).unwrap();
             let entry = utils::get_as_type(addr.to_owned()).unwrap();
-            happs::AppResponse::new(entry, addr, upvotes as i32, upvoted_my_me)
+            happs::AppResponse::new(entry, addr, upvotes as i32, upvoted_by_me)
         })
         .collect())
 }
@@ -41,9 +41,9 @@ pub fn handle_get_all_apps() -> ZomeApiResult<Vec<happs::AppResponse>> {
 }
 
 pub fn handle_get_app(app_hash: Address) -> ZomeApiResult<happs::AppResponse> {
-    let (upvotes, upvoted_my_me) = get_upvotes(&app_hash)?;
+    let (upvotes, upvoted_by_me) = get_upvotes(&app_hash)?;
     let entry = utils::get_as_type(app_hash.clone())?;
-    Ok(AppResponse::new(entry, app_hash, upvotes, upvoted_my_me))
+    Ok(AppResponse::new(entry, app_hash, upvotes, upvoted_by_me))
 }
 
 /*
