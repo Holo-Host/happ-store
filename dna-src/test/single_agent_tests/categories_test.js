@@ -51,6 +51,6 @@ module.exports = (scenario) => {
 
     const result3 = await liza.app.call("happs", "get_apps_by_category", {category:"good apps"})
     console.log(result3)
-    t.equal(result3.Ok.length, 2)
+    t.equal(result3.Ok.length, 1)
   })
 }
