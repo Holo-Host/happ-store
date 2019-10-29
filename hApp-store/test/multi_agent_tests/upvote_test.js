@@ -12,6 +12,7 @@ const App1 = {
   ui: {
     location: "ui/url",
     hash: "QmHash",
+    handle: "holochat",
   }
 }
 

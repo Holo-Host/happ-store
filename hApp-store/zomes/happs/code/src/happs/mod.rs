@@ -7,13 +7,14 @@ use hdk::{
 };
 
 pub mod handlers;
+pub mod utils;
 pub use handlers::get_linked_apps;
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
 pub struct AppResource {
     pub location: String,
     pub hash: HashString,
-    pub handle: Option<String>,
+    pub handle: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
@@ -25,7 +26,7 @@ pub struct AppEntry {
     pub thumbnail_url: String,
     pub homepage_url: String,
     pub dnas: Vec<AppResource>,
-    pub ui: Option<AppResource>,
+    pub ui: AppResource,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
@@ -45,6 +46,9 @@ impl AppResponse {
             upvotes: upvotes,
             upvoted_by_me,
         };
+    }
+    pub fn entry(&self) -> AppEntry {
+        return self.app_entry.clone();
     }
 }
 

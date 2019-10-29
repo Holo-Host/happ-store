@@ -1,7 +1,7 @@
 use hdk::{
     error::{ZomeApiError, ZomeApiResult},
     holochain_core_types::{entry::Entry, link::LinkMatch},
-    holochain_json_api::json::RawString,
+    holochain_json_api::{json::RawString},
     holochain_persistence_api::{cas::content::Address, cas::content::AddressableContent},
     utils, AGENT_ADDRESS,
 };
@@ -55,7 +55,7 @@ pub fn handle_create_app(
     thumbnail_url: String,
     homepage_url: String,
     dnas: Vec<AppResource>,
-    ui: Option<AppResource>,
+    ui: AppResource,
 ) -> ZomeApiResult<Address> {
     let agent_data: serde_json::Value = serde_json::from_str(&hdk::AGENT_ID_STR.to_string())
         .map_err(|_| ZomeApiError::Internal("Error: Agent string not valid json".to_string()))?;
