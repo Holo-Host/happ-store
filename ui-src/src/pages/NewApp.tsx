@@ -88,6 +88,7 @@ export interface State {
   appInput: AppCreationSpec,
   uiUrl: string,
   uiHash: string,
+  uiHandle: string,
   dnaUrl: string,
   dnas: Array<AppResource>
 }
@@ -101,6 +102,7 @@ class NewApp extends React.Component<Props, State> {
     uiUrl: '',
     dnaUrl: '',
     uiHash: '',
+    uiHandle: '',
     dnas: [{
       location: '',
       hash: '',
@@ -198,7 +200,15 @@ class NewApp extends React.Component<Props, State> {
                     className={classes.textField}
                   />
                 </Grid>
-
+                <Grid item={true} xs={12}>
+                  <TextField
+                    id="ui-field"
+                    label="UI Handle"
+                    value={this.state.uiHash || ''}
+                    onChange={this.handleUiChange('uiHandle')}
+                    className={classes.textField}
+                  />
+                </Grid>
                 <br/>
                 <br/>
                 <Typography component="caption" className={classes.heading}>
@@ -349,7 +359,7 @@ class NewApp extends React.Component<Props, State> {
   }
 
   private handleClickSubmit = (app: AppCreationSpec) => (event: any) => {
-    const appWithFiles = { ...app, dnas: this.state.dnas, ui: { location: this.state.uiUrl, hash: this.state.uiHash } }
+    const appWithFiles = { ...app, dnas: this.state.dnas, ui: { location: this.state.uiUrl, hash: this.state.uiHash, handle: this.state.uiHandle } }
     console.log("app to be registered in happ store", appWithFiles);
 
     this.props.createApp(appWithFiles).then(() => {
