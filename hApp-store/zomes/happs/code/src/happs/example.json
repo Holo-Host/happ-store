@@ -1,0 +1,29 @@
+{
+  "instances":{
+    "list": [{
+    "name": "Peer Chat Public",
+    "id": "__peer-chat-public",
+    "dna_hash": "QmeXdDhkKUq86uWt44END8DuqRyYQCGp4U66f5hdX7LVaa",
+    "uri": "https://github.com/holochain/peer-chat/releases/download/0.016/peer-chat.dna.json"
+  }],
+  "dna_properties": {
+    "agent_id": "${AGENT_ID}"
+    }
+  },
+  "bridges": [{
+    "handle": "p-p-bridge",
+    "caller_id": "__peer-chat-public",
+    "callee_id": "__personas-profiles"
+  }],
+  "UIs": {
+    "list":[{
+      "name": "Identity Manager",
+      "id": "identity-manager-ui",
+      "ui_bundle_hash": "Qm34abcde",
+      "uri": "https://github.com/holochain/identity-manager/releases/download/0.1.9/identity-manager-ui.zip",
+      "instance_references": {
+        "ui_handle": "personas-profiles",
+        "instance_id": "__personas-profiles"
+      }]
+  }
+}

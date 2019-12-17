@@ -6,7 +6,7 @@ import store from './store'
 
 import { createAction } from 'typesafe-actions'
 import { createHolochainZomeCallAsyncAction } from '@holochain/hc-redux-middleware'
-import { AppCreationSpecSnake, App } from './types/app'
+import { AppCreationSpecSnake, App,  } from './types/app'
 
 
 interface DnaBundle {
@@ -17,6 +17,11 @@ interface UiBundle {
     ui_bundle: string,
 }
 
+export const GetManifest = createHolochainZomeCallAsyncAction<
+{app_hash: string},
+{}
+>
+(`happ-store`, 'happs', 'generate_manifest')
 
 export const CreateApp = createHolochainZomeCallAsyncAction<
   AppCreationSpecSnake,
@@ -37,37 +42,37 @@ export const GetApp = createHolochainZomeCallAsyncAction<
 
 
 export const Whoami = createHolochainZomeCallAsyncAction<
-{}, 
+{},
 {hash: string, name: string}
 >
 (`happ-store`, 'whoami', 'get_user')
 
 export const AddAppToCategory = createHolochainZomeCallAsyncAction<
-{app_address: string, category: string}, 
+{app_address: string, category: string},
 {}
 >
 (`happ-store`, 'happs', 'add_app_to_category')
 
 export const AddAppToTag = createHolochainZomeCallAsyncAction<
-{app_address: string, category: string}, 
+{app_address: string, category: string},
 {}
 >
 (`happ-store`, 'happs', 'add_app_to_tag')
 
 export const GetAppsByCategory = createHolochainZomeCallAsyncAction<
-{app_address: string, category: string}, 
+{app_address: string, category: string},
 {}
 >
 (`happ-store`, 'happs', 'get_apps_by_category')
 
 export const GetAppsByTag = createHolochainZomeCallAsyncAction<
-{app_address: string, category: string}, 
+{app_address: string, category: string},
 {}
 >
 (`happ-store`, 'happs', 'get_apps_by_tag')
 
 export const UpvoteApp = createHolochainZomeCallAsyncAction<
-{app_address: string}, 
+{app_address: string},
 {}
 >
 (`happ-store`, 'happs', 'upvote_app')

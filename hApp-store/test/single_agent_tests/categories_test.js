@@ -9,10 +9,12 @@ const App1 = {
   dnas: [{
     location: "/dna/url",
     hash: "QmHash",
+    handle: "holochat",
   }],
   ui: {
     location: "ui/url",
     hash: "QmHash",
+    handle: "holochat",
   }
 }
 
@@ -24,8 +26,13 @@ const App2 = {
   dnas: [{
     location: "/dna/url",
     hash: "QmHash",
+    handle: "clutter",
   }],
-  ui: null,
+  ui: {
+    location: "ui/url",
+    hash: "QmHash",
+    handle: "clutter",
+  }
 }
 
 module.exports = (scenario) => {

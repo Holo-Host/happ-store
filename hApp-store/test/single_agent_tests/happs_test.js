@@ -13,20 +13,8 @@ const App1 = {
   ui: {
     location: "ui/url",
     hash: "QmHash",
+    handle: "holochat",
   }
-}
-
-const App2 = {
-  title: "Clutter",
-  description: "A better Twiter",
-  thumbnail_url: "/IMG.jpg",
-  homepage_url: "home/page",
-  dnas: [{
-    location: "/dna/url",
-    hash: "QmHash",
-    handle: "clutter",
-  }],
-  ui: null,
 }
 
 module.exports = (scenario) => {
@@ -35,7 +23,7 @@ module.exports = (scenario) => {
     const { liza } = await s.players({liza: one('liza')}, true)
 
     const create_result = await liza.callSync( "app", "happs", "create_app", App1);
-    console.log(create_result)
+    console.log("Created:",create_result)
     const app_address = create_result.Ok
     t.equal(app_address.length, 46)
 
@@ -57,6 +45,10 @@ module.exports = (scenario) => {
     console.log(get_all_apps_result_after_upvote)
     t.equal(get_all_apps_result_after_upvote.Ok[0].upvotes , 1)
     t.equal(get_all_apps_result_after_upvote.Ok[0].upvotedByMe , true)
+
+    const manifest = await liza.callSync( "app", "happs", "generate_manifest", {app_hash:app_address});
+    console.log("--> ",manifest.Ok)
+    t.ok(manifest.Ok)
 
     await liza.kill()
   })

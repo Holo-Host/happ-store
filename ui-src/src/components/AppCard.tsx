@@ -44,6 +44,7 @@ interface Props {
 	classes: any,
 	app: App,
   upvoteApp: (app: App) => Promise<string>
+  getManifest: (app: App) => Promise<string>
 }
 
 class AppCard extends React.Component<Props> {
@@ -95,6 +96,9 @@ class AppCard extends React.Component<Props> {
 	        <Button size="small" color="primary" href={appEntry.homepageUrl}>
 	          Visit Homepage
 	        </Button>
+          <Button size="small" color="primary" onClick={this.handleGetManifest}>
+	          Download Manifest
+	        </Button>
         </CardActions>
       </Card>
     );
@@ -104,15 +108,21 @@ class AppCard extends React.Component<Props> {
     console.log("upvoting", this.props.app)
     return this.props.upvoteApp(this.props.app)
   }
-
+  private handleGetManifest = () => {
+    this.props.getManifest(this.props.app).then((r)=>{
+      console.log("Manifest: ",r)
+      alert(`Manifest: ${JSON.stringify(r)}`)
+    })
+  }
 }
 
-import { UpvoteApp } from '../actions'
+import { UpvoteApp, GetManifest } from '../actions'
 
 const mapStateToProps = (state) => ({ });
 
 const mapDispatchToProps = dispatch => ({
   upvoteApp: (app: App) => dispatch(UpvoteApp.create({app_address: app.address})),
+  getManifest: (app: App) => dispatch(GetManifest.create({app_hash: app.address})),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AppCard));

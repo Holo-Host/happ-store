@@ -9,7 +9,7 @@ extern crate holochain_json_derive;
 use hdk::{
     error::ZomeApiResult,
     holochain_json_api::{error::JsonError, json::JsonString},
-    holochain_persistence_api::cas::content::Address,
+    holochain_persistence_api::{cas::content::Address, hash::HashString},
 };
 
 mod categories;
@@ -36,7 +36,7 @@ define_zome! {
 
     functions: [
         create_app: {
-            inputs:| title: String, description: String, thumbnail_url: String, homepage_url: String, dnas: Vec<AppResource>, ui: Option<AppResource> |,
+            inputs:| title: String, description: String, thumbnail_url: String, homepage_url: String, dnas: Vec<AppResource>, ui: AppResource |,
             outputs: |result: ZomeApiResult<Address>|,
             handler: happs::handlers::handle_create_app
         }
@@ -85,9 +85,14 @@ define_zome! {
             outputs: |result: ZomeApiResult<Vec<AppResponse>>|,
             handler: categories::handlers::handle_get_apps_by_tag
         }
+        generate_manifest: {
+            inputs:|app_hash: HashString|,
+            outputs: |result: ZomeApiResult<happs::utils::Manifest>|,
+            handler: happs::utils::generate_manifest
+        }
     ]
 
     traits: {
-        hc_public [get_apps_by_tag, get_apps_by_category, add_app_to_tag, add_app_to_category, get_ratings, create_ratings, get_app, get_all_apps, create_app, upvote_app]
+        hc_public [get_apps_by_tag, get_apps_by_category, add_app_to_tag, add_app_to_category, get_ratings, create_ratings, get_app, get_all_apps, create_app, upvote_app, generate_manifest]
     }
 }
