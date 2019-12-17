@@ -1,4 +1,4 @@
-{ pkgs ? import ./pkgs.nix {} }:
+{ pkgs ? import ./pkgs.nix, shell ? false }:
 
 with pkgs;
 
@@ -8,6 +8,8 @@ in
 
 {
   happ-store = buildDNA {
+    inherit shell;
+
     name = "happ-store";
     src = gitignoreSource ./.;
 

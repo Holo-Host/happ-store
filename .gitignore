@@ -11,6 +11,8 @@ bundle.json
 /holochain-rust
 node_modules/
 /target
+/result
+*.log
 
 tmp-storage
 
@@ -24,3 +26,4 @@ tmp-storage
 .Trashes
 ehthumbs.db
 .cargo
+*.zip
