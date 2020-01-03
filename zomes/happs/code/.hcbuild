@@ -17,13 +17,15 @@
       "arguments": [
         "-Oz",
         "--vacuum",
-        "../../../target/wasm32-unknown-unknown/release/happs.wasm"
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm",
+        "-o",
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm.opt"
       ]
     },
     {
       "command": "wasm2wat",
       "arguments": [
-        "../../../target/wasm32-unknown-unknown/release/happs.wasm",
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm.opt",
         "-o",
         "../../../target/wasm32-unknown-unknown/release/happs.wat"
       ]
