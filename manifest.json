@@ -15,5 +15,7 @@
   "uuid": "00000000-0000-0000-0000-000000000000",
   "version": "0.6.0",
   "dht": {},
-  "properties": null
+  "properties": {
+    "sim2h_url": "ws://happstore.sim2h.net:9000"
+}
 }
