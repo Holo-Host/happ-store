@@ -11,9 +11,9 @@ DNA		= dist/$(DNANAME).dna.json
 
 # External targets; Uses a nix-shell environment to obtain Holochain runtimes, run tests, etc.
 # See CONTRIBUTING.md for details of how to develop against a local copy of holochain-rust, eg.:
-# 
+#
 #     nix-shell -I holochain-rust=../holochain-rust
-# 
+#
 .PHONY: all
 all: nix-test nix-happ-store-ui.zip
 
@@ -57,7 +57,7 @@ test-dna:	$(DNA)
 # End-to-end test of DNA.  Runs a sim2h_server on localhost:9000; the default expected by `hc test`
 test-e2e:	test-dna test-sim2h test-node
 	@echo "Starting Scenario tests..."; \
-	    RUST_BACKTRACE=1 hc test \
+	    RUST_BACKTRACE=1 HC_IGNORE_SIM2H_URL_PROPERTY=true hc test \
 	        | test/node_modules/faucet/bin/cmd.js
 
 test-node:
