@@ -7,6 +7,36 @@
         "--release",
         "--target=wasm32-unknown-unknown"
       ]
+    },
+    {
+      "command": "wasm-gc",
+      "arguments": ["../../../target/wasm32-unknown-unknown/release/happs.wasm"]
+    },
+    {
+      "command": "wasm-opt",
+      "arguments": [
+        "-Oz",
+        "--vacuum",
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm",
+        "-o",
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm.opt"
+      ]
+    },
+    {
+      "command": "wasm2wat",
+      "arguments": [
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm.opt",
+        "-o",
+        "../../../target/wasm32-unknown-unknown/release/happs.wat"
+      ]
+    },
+    {
+      "command": "wat2wasm",
+      "arguments": [
+        "../../../target/wasm32-unknown-unknown/release/happs.wat",
+        "-o",
+        "../../../target/wasm32-unknown-unknown/release/happs.wasm"
+      ]
     }
   ],
   "artifact": "../../../target/wasm32-unknown-unknown/release/happs.wasm"
